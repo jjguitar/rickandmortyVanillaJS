@@ -3,6 +3,7 @@ import API from './api.js'
 const api = new API()
 
 const $characterContainer = document.getElementById('character-container')
+const $characterName = document.getElementById('character-name')
 
 
 class Character {
@@ -40,6 +41,8 @@ class Character {
 
   render() {
     $characterContainer.innerHTML = this.build()
+    $characterName.innerHTML = this.name
+
   }
 }
 

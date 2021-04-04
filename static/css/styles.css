@@ -8,9 +8,44 @@ body {
   font-size: 16px;
 }
 
+span {
+  margin: 0;
+  padding: 0;
+}
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.asset {
+  writing-mode: vertical-rl;
+  display: flex;
+  align-items: center;
+  width: 2rem;
+  margin: 0 32px;
+  height: 200px;
+}
+
+.top {
+  grid-area: asset-top;
+
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: black;
+  border-radius: 50%;
+  display: inline-flex;
+  margin-inline: 5px;
+}
+
+.line-asset {
+  width: 2px;
+  height: 150px;
+  background: black;
+  display: inline-flex;
+  margin-inline: 15px;
 }
 
 .character-placeholder {
@@ -23,7 +58,6 @@ a {
   z-index: 1;
   white-space: nowrap;
   position: absolute;
-  left: 0;
   right: 0;
   bottom: 0;
   top: 0;
@@ -34,10 +68,10 @@ a {
   z-index: 2;
 }
 
-@media screen and (min-width: 320px) {
-  .character-placeholder {
+/* @media screen and (min-width: 320px) { */
+  /* .character-placeholder {
     display: none;
-  }
+  } */
 
   .grid {
     display: grid;
@@ -72,17 +106,34 @@ a {
   .character-container {
     display: grid;
     gap: 15px;
-    grid-template-columns: 1fr;
-    grid-template-areas: "character";
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "character character"
+    "character character"
+    "character character"
+    "title title"
+    "name name"
+    "about about"
+    "labels labels";
   }
 
   .character-img {
     grid-area: character;
     margin: 0 auto;
-    width: 70%;
     border-radius: 50%;
-    min-height: 202px;
+    min-height: 270px;
     max-width: 270px;
+  }
+
+  .name {
+    grid-area: title;
+    display: flex;
+    align-items: center;
+  }
+
+  .about {
+    grid-area: about;
+    display: flex;
+    align-items: center;
   }
 
   p, h2 {
@@ -99,10 +150,11 @@ a {
     padding: 1em;
     color: white;
     border-radius: 10px;
+    margin-bottom: 10px;
   }
 
-  .character-label {
-    margin-bottom: 10px;
+  .character-labels {
+    grid-area: labels;
   }
 
   .arrow-container {
@@ -129,17 +181,30 @@ a {
   }
 
   .character-name {
+    grid-area: name;
     min-height: 65px;
     display: flex;
     align-items: center;
   }
-}
+/* } */
 
+@media screen and (min-width: 768px) {
 
+ .character-container {
+   grid-template-columns: .2fr 1fr 1fr 1fr;
+   grid-template-areas: ". . character character"
+   "title name character character"
+   ". . character character"
+   "about labels labels .";
+ }
 
+ .name, .about {
+   transform: rotate(-90deg);
+   justify-self: center;
+ }
 
-.character {
-  text-align: center;
+ 
+
 }
 
 
